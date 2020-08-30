@@ -18,27 +18,35 @@ class Comment1Class{
     }
 
     addComment(json) {
-        htmlElement.innerHTML = 
+        htmlElement.innerHTML += 
         `<div class="comment-${json.id}">
         <p>
-        <span class="price">${json.info}</span>
+        <span class="info">${json.info}</span>
         <button class="delete" data-id="${json.id}">Delete</button>
         <button class="update" data-id="${json.id}">Update</button>
         <p>
         </div>`
     }
 
+    
     createComment(json) {
         for (const comment of json) {
-        htmlElement.innerHTML = 
+        htmlElement.innerHTML += 
         `<div class="comment-${comment.id}">
         <p>
-        <span class="price">${comment.info}</span>
+        <span class="info">${comment.info}</span>
         <button class="delete" data-id="${comment.id}">Delete</button>
         <button class="update" data-id="${comment.id}">Update</button>
         <p>
         </div>`
         }
     }
+
+    
+    // addItems(response){
+    //     response.info.forEach( item => {
+    //         addComment(item)
+    // })
+    // }
 
 }

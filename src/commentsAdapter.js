@@ -27,16 +27,24 @@ class CommentAdapter{
             body: JSON.stringify(formData)
         }; 
         
-        fetch("http://localhost:3000/comments", configObj)
+        fetch("http://localhost:3000/comments.json", configObj)
         .then(response => response.json())
         .then(json => comment1Class.addComment(json))
-        form.reset()   
+        form.reset()
     }
 
+
+    // fetchComments(){
+    //     fetch('http://localhost:3000/comments')
+    //     .then(response => response.json())
+    //     .then(comment1Class.addItems)
+    // }
+    
     fetchComments() {
-        fetch("http://localhost:3000/comments")
+        fetch("http://localhost:3000/comments.json")
         .then(response => response.json())
         .then(json => comment1Class.createComment(json))
+        
     }
 
     deleteMethod(e) {
@@ -54,7 +62,6 @@ class CommentAdapter{
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(formData)
         };
         
         fetch("http://localhost:3000/comments", configObj)
