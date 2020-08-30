@@ -1,4 +1,8 @@
 const comment1Class = new Comment1Class
+const commentList = document.querySelector("#comment-list")
+const jsonid = 18
+
+// The Delete action does not work.
 
 class CommentAdapter{
     constructor(){
@@ -26,46 +30,43 @@ class CommentAdapter{
             },
             body: JSON.stringify(formData)
         }; 
-        
-        fetch("http://localhost:3000/comments.json", configObj)
+        fetch("http://localhost:3000/comments", configObj)
         .then(response => response.json())
         .then(json => comment1Class.addComment(json))
         form.reset()
     }
 
-
-    // fetchComments(){
-    //     fetch('http://localhost:3000/comments')
-    //     .then(response => response.json())
-    //     .then(comment1Class.addItems)
-    // }
-    
     fetchComments() {
         fetch("http://localhost:3000/comments.json")
         .then(response => response.json())
-        .then(json => comment1Class.createComment(json))
-        
-    }
-
-    deleteMethod(e) {
-        e.preventDefault()
-
-        let formData = {
-        
-        "info": document.querySelector(`comment-${json.id}`).value,
-        "subject_id": "1"
-        }
-        
-        let configObj = {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-        };
-        
-        fetch("http://localhost:3000/comments", configObj)
-        .then(response => response.json())
-        .then(json => comment1Class.deleteComment(json))
+        .then(json => comment1Class.createComment(json))        
     }
 }
+    //Esto esta jodiendo el add comment
+//     deleteMethod(e) {
+//         e.preventDefault()
+//         if(e.target.className === "delete"){
+//            jsonid = e.target.dataset.id}
+
+//         // let formData = {
+        
+//         //     "delete": document.querySelector(`comment-${id}`).value,
+//         //     "subject_id": "1"
+//         //     }
+        
+//         let configObj = {
+//             method: "DELETE",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Accept": "application/json"
+//             },
+//             //body: JSON.stringify(formData)
+//         };
+//         fetch(`http://localhost:3000/comments/${jsonid}`, configObj)
+//         .then(response => response.json())
+//         .then(json => comment1Class.deleteComment(json))
+//     }
+// }
+
+
+
