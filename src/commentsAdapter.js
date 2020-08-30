@@ -1,26 +1,64 @@
-class CommentsAdapter{
+const comment1Class = new Comment1Class
+
+class CommentAdapter{
     constructor(){
         this.baseUrl = "http://localhost:3000/comments"
     }
 
-    // GET
-    fetchComments(){
-        fetch(this.baseUrl)
-        .then(res => res.json())
-        .then(json => {
-            json.data.forEach((el)=>{
-                this.sanitizeAndInitializeComment(el)
-            })
-        })
+    // Comment adapter is for fetching
+    // Comments Class is for the functionality and displaying the comment on the DOM
+    // Comments should have render to call comment.render
+    // Comment.attach_to_dom
+    submitData(e) {
+        e.preventDefault()
+          //debugger-devtools open, submit chequ the value of textarea
+        let formData = {
+        
+        "info": document.querySelector('textarea').value,
+        "subject_id": "1"
+        }
+        
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        }; 
+        
+        fetch("http://localhost:3000/comments", configObj)
+        .then(response => response.json())
+        .then(json => comment1Class.addComment(json))
+        form.reset()   
     }
 
-    sanitizeAndInitializeComment(resp){
-        let com = new Comment({id: resp.id, ...resp.attributes})
-        com.attachToDom()
+    fetchComments() {
+        fetch("http://localhost:3000/comments")
+        .then(response => response.json())
+        .then(json => comment1Class.createComment(json))
     }
 
+    deleteMethod(e) {
+        e.preventDefault()
 
-
-
-
+        let formData = {
+        
+        "info": document.querySelector(`comment-${json.id}`).value,
+        "subject_id": "1"
+        }
+        
+        let configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        };
+        
+        fetch("http://localhost:3000/comments", configObj)
+        .then(response => response.json())
+        .then(json => comment1Class.deleteComment(json))
+    }
 }

@@ -1,40 +1,18 @@
 class CommentClass{
     static all = []
 
-    constructor({id, info}){
-        this.id = id
-        this.info = info
-        Comment.all.push(this)
-    }
+    /// Que funcione el constructor
 
-    submitData(e) {
-        e.preventDefault()
-          //debugger-devtools open, submit chequ the value of textarea
-        let formData = {
-        
-        "info": document.querySelector('textarea').value,
-        "subject_id": "1"
-        }
-        
-        let configObj = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(formData)
-        }; 
-        
-        fetch("http://localhost:3000/comments", configObj)
-        .then(response => response.json())
-        .then(json => addComment(json))
-        form.reset()   
-        }
+    // constructor({id, info}){
+    //     this.id = id
+    //     this.info = info
+    //     Comment.all.push(this)
+    // }
 
-    fetchComments() {
-        fetch("http://localhost:3000/comments")
-        .then(response => response.json())
-        .then(json => createComment(json))
+    removeElement(json) {
+        // Removes an element from the document.
+        var element = document.getElementById(json);
+        element.parentNode.removeChild(json);
     }
 
     addComment(json) {
@@ -43,7 +21,7 @@ class CommentClass{
         let newDiv = document.createElement('div');
         newDiv.className = `comment-${json.id}`
         htmlElement.append(newDiv)
-        writeComments(comment, newDiv)
+        this.writeComments(comment, newDiv)
     }
     
     createComment(json) {
@@ -54,8 +32,8 @@ class CommentClass{
           let newDiv = document.createElement('div')  
           newDiv.className = `comment-${comment.id}`
           htmlElement.append(newDiv)
-          writeComments(comment1, newDiv)
-      }
+          this.writeComments(comment1, newDiv)
+        }
     }
 
     writeComments(comment, newDiv) {
@@ -63,7 +41,4 @@ class CommentClass{
         commentChild.innerHTML = `<span>${comment} </span>`
         newDiv.appendChild(commentChild)
     }
-
-
-
 }

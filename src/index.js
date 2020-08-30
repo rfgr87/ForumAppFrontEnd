@@ -1,4 +1,6 @@
-const commentClass = new CommentClass
+const commentAdapter = new CommentAdapter
+//const commentClass = new CommentClass
+
 
 //console.log("this is logged")
 //test that we can get data from the backend
@@ -9,12 +11,9 @@ const SUBJECT_URL = `${BASE_URL}/subjects`
 document.addEventListener("DOMContentLoaded", () => {
 
 form = document.querySelector('.comment-area')
-form.addEventListener("submit", commentClass.submitData())
+form.addEventListener("submit", commentAdapter.submitData)
 //form.addEventListener('submit', submitData)
-commentClass.fetchComments()
+commentAdapter.fetchComments()
 // Aqui voy a poner todo lo necesario para llenar el DOM
 
 });
-
-
-
