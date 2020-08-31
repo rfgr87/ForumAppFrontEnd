@@ -9,11 +9,11 @@ class CommentClass{
     //     Comment.all.push(this)
     // }
 
-    removeElement(json) {
-        // Removes an element from the document.
-        var element = document.getElementById(json);
-        element.parentNode.removeChild(json);
-    }
+    // removeElement(json) {
+    //     // Removes an element from the document.
+    //     var element = document.getElementById(json);
+    //     element.parentNode.removeChild(json);
+    // }
 
     addComment(json) {
         let htmlElement = document.querySelector('div#comments-list');

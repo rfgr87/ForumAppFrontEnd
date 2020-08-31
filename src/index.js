@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 form = document.querySelector('.comment-area')
 form.addEventListener("submit", commentAdapter.submitData)
-form.addEventListener("click", commentAdapter.deleteMethod)
+//form.addEventListener("click", commentAdapter.deleteMethod)
 //form.addEventListener('submit', submitData)
 commentAdapter.fetchComments()
 // Aqui voy a poner todo lo necesario para llenar el DOM
