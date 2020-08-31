@@ -42,7 +42,8 @@ class CommentAdapter{
         .then(json => comment1Class.createComment(json))        
     }
 }
-    //Esto esta jodiendo el add comment
+
+//Esto esta jodiendo el add comment
 //     deleteMethod(e) {
 //         e.preventDefault()
 //         if(e.target.className === "delete"){
