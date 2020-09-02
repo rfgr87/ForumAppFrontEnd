@@ -1,0 +1,42 @@
+//const commentAdapter = new CommentAdapter
+
+const htmlElement = document.querySelector('div#comments-list');
+
+const subjectHtmlElement = document.querySelector('div#subject-list');
+
+
+
+class Subject{
+    static all = []
+
+    /// This does not work if uncommented
+
+    constructor({id, theme}){
+        this.id = id
+        this.theme = theme
+        this.element = document.createElement('div')
+        this.element.id = `subject-${this.id}`
+        Subject.all.push(this)
+    }
+
+    addSubject(){
+        this.render()
+        subjectHtmlElement.append(this.element)
+    }
+
+    render() {
+        this.element.innerHTML += 
+        `<p>
+        <span class="theme">${this.theme}</span>
+        <p>`
+    }
+
+    chooseSubject(){
+        let subject = document.querySelector(`#subject-${this.id}`)
+        subject.addEventListener('click', subjectEvent())
+    }
+    
+    subjectEvent(){
+        //Aqui poner el html que se necesita para poner todos los comments
+    }
+}

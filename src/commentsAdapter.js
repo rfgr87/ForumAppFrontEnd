@@ -1,6 +1,6 @@
-const comment1Class = new Comment1Class
+//const comment1Class = new Comment1Class
 const commentList = document.querySelector("#comment-list")
-const jsonid = 18
+
 
 // The Delete action does not work.
 
@@ -9,17 +9,14 @@ class CommentAdapter{
         this.baseUrl = "http://localhost:3000/comments"
     }
 
-    // Comment adapter is for fetching
-    // Comments Class is for the functionality and displaying the comment on the DOM
-    // Comments should have render to call comment.render
-    // Comment.attach_to_dom
+    
     submitData(e) {
         e.preventDefault()
           //debugger-devtools open, submit chequ the value of textarea
         let formData = {
         
         "info": document.querySelector('textarea').value,
-        "subject_id": "1"
+        "subject_id": "1" //document.querySelector(`#subject-${this.id}`)
         }
         
         let configObj = {
@@ -32,42 +29,60 @@ class CommentAdapter{
         }; 
         fetch("http://localhost:3000/comments", configObj)
         .then(response => response.json())
-        .then(json => comment1Class.addComment(json))
+        .then(json => {
+            let comment = new Comment1Class(json)
+            comment.addComment()
+            comment.addEventListeners()       
+        })
         form.reset()
     }
 
     fetchComments() {
         fetch("http://localhost:3000/comments.json")
         .then(response => response.json())
-        .then(json => comment1Class.createComment(json))        
+        .then(jsonArray => {
+            for (const element of jsonArray) {
+                let comment = new Comment1Class(element)
+                comment.addComment()
+                comment.addEventListeners()
+            }
+        
+        }
+    ) 
+               
     }
-}
-
-//Esto esta jodiendo el add comment
-//     deleteMethod(e) {
-//         e.preventDefault()
-//         if(e.target.className === "delete"){
-//            jsonid = e.target.dataset.id}
-
-//         // let formData = {
+    
+    deleteMethod(id) {
         
-//         //     "delete": document.querySelector(`comment-${id}`).value,
-//         //     "subject_id": "1"
-//         //     }
-        
-//         let configObj = {
-//             method: "DELETE",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 "Accept": "application/json"
-//             },
-//             //body: JSON.stringify(formData)
-//         };
-//         fetch(`http://localhost:3000/comments/${jsonid}`, configObj)
+        let configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            //body: JSON.stringify(formData)
+        };
+        fetch(`http://localhost:3000/comments/${id}`, configObj)
+        .then(response => response.json())
+        // .then(json => this.deleteComment())
+    }
+
+
+//     fetchSubjects() {
+//         fetch("http://localhost:3000/subjects.json")
 //         .then(response => response.json())
-//         .then(json => comment1Class.deleteComment(json))
-//     }
+//         .then(jsonArray => {
+//             for (const n of jsonArray) {
+//                 let subject = new Subject(n)
+//                 subject.addSubjects()
+//                 subject.addEventListeners()
+//             }
+        
+//         }
+//     ) 
 // }
+
+}
 
 
 

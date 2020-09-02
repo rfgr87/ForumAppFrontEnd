@@ -1,58 +1,45 @@
+//const commentAdapter = new CommentAdapter
+
 const htmlElement = document.querySelector('div#comments-list');
+
 
 class Comment1Class{
     static all = []
 
     /// This does not work if uncommented
 
-    // constructor({id, info}){
-    //     this.id = id
-    //     this.info = info
-    //     Comment.all.push(this)
-    // }
-
-    // removeElement(json) {
-    //     // Removes an element from the document.
-    //     var element = document.getElementById(json);
-    //     element.parentNode.removeChild(json);
-    // }
-
-    addComment(json) {
-        htmlElement.innerHTML += 
-        `<div class="comment-${json.id}">
-        <p>
-        <span class="info">${json.info}</span>
-        <button class="delete" id="${json.id}">Delete</button>
-        <button class="update" id="${json.id}">Update</button>
-        <p>
-        </div>`
+    constructor({id, info, subject_id}){
+        this.id = id
+        this.info = info
+        this.subject_id = subject_id
+        this.element = document.createElement('div')
+        this.element.id = `comment-${this.id}`
+        Comment1Class.all.push(this)
     }
 
-    
-    createComment(json) {
-        for (const comment of json) {
-        htmlElement.innerHTML += 
-        `<div class="comment-${comment.id}">
-        <p>
-        <span class="info">${comment.info}</span>
-        <button class="delete" id="${comment.id}">Delete</button>
-        <button class="update" id="${comment.id}">Update</button>
-        <p>
-        </div>`
-        }
+    addComment(){
+        this.render()
+        htmlElement.append(this.element)
     }
 
-    deleteComment(json){
-        var element = document.getElementById(json);
-        element.parentNode.removeChild(json);
-        
-        //id = object.id
-        // remove from dom
-        // optimistic rendering
-        // Aqui hay que trabajar con como sacar la informacion y 
-        //targuetiar el comment especifico.
-        //let comment = htmlElement.getElementBy(`comment-${id}`)
-        //let comment = document.getElementById(`comment-${id}`)
-        //element.remove()
+    render(){
+        this.element.innerHTML += 
+        `<p>
+        <span class="info">${this.info}</span>
+        <button class="delete" id="delete-${this.id}">Delete</button>
+        <p>`
+    }
+
+    addEventListeners(){
+        let deleteButton = document.querySelector(`#delete-${this.id}`)
+        //debugger
+        deleteButton.addEventListener('click', this.deleteComment)    
+        deleteButton.addEventListener('click', commentAdapter.deleteMethod(this.id))
+    }
+
+    deleteComment(event){
+        console.log('delete')
+        let id = event.target.id.split('-')[1]
+        event.target.parentNode.parentNode.remove()
     }
 }
