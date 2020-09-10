@@ -1,0 +1,12 @@
+Como obtener un subject_id de una classe para el fetch de otra classe Como
+subjectclass current id to Comment class fetch comments by id
+Y tener un fetch que sustituya y renderize los comments cadavez que se clickee un subject
+
+
+
+CSS and HTML Instructions to choose a subject
+
+Clean the unusued code 
+
+Clear short comments
+

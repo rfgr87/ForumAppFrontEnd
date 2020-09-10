@@ -2,7 +2,6 @@
 
 const htmlElement = document.querySelector('div#comments-list');
 
-
 class Comment1Class{
     static all = []
 
@@ -34,12 +33,12 @@ class Comment1Class{
         let deleteButton = document.querySelector(`#delete-${this.id}`)
         //debugger
         deleteButton.addEventListener('click', this.deleteComment)    
-        deleteButton.addEventListener('click', commentAdapter.deleteMethod(this.id))
     }
 
     deleteComment(event){
         console.log('delete')
         let id = event.target.id.split('-')[1]
         event.target.parentNode.parentNode.remove()
+        commentAdapter.deleteMethod(id)
     }
 }

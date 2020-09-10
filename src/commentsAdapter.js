@@ -1,6 +1,6 @@
 //const comment1Class = new Comment1Class
 const commentList = document.querySelector("#comment-list")
-
+//const subjectClass = new Subject
 
 // The Delete action does not work.
 
@@ -13,10 +13,19 @@ class CommentAdapter{
     submitData(e) {
         e.preventDefault()
           //debugger-devtools open, submit chequ the value of textarea
+        
+        if(currentSubject == null){
+            errorMessage.innerHTML = 'Choose a subject to submit'
+        }
+        else {
         let formData = {
         
         "info": document.querySelector('textarea').value,
-        "subject_id": "1" //document.querySelector(`#subject-${this.id}`)
+        "subject_id": currentSubject.id
+        // currentSubject.id
+        // have a default subject
+        // only when I click the subject I unhide the form... attribute called hidden 
+        // and can be changed to true or false
         }
         
         let configObj = {
@@ -32,25 +41,24 @@ class CommentAdapter{
         .then(json => {
             let comment = new Comment1Class(json)
             comment.addComment()
-            comment.addEventListeners()       
+            comment.addEventListeners()    
         })
         form.reset()
-    }
+    }}
 
     fetchComments() {
-        fetch("http://localhost:3000/comments.json")
+        fetch("http://localhost:3000/comments")
         .then(response => response.json())
         .then(jsonArray => {
             for (const element of jsonArray) {
                 let comment = new Comment1Class(element)
-                comment.addComment()
-                comment.addEventListeners()
+                // comment.addComment()
+                // comment.addEventListeners()
+                //subjectClass.addSubjects()
             }
-        
         }
-    ) 
-               
-    }
+    )            
+}
     
     deleteMethod(id) {
         
@@ -64,8 +72,8 @@ class CommentAdapter{
         };
         fetch(`http://localhost:3000/comments/${id}`, configObj)
         .then(response => response.json())
-        // .then(json => this.deleteComment())
-    }
+        //.then(json => this.deleteComment())
+}
 
 
 //     fetchSubjects() {

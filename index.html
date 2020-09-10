@@ -22,17 +22,20 @@
     </head>
     <body>
       <div>
-        <div id="comments-list"><br> 
-      <h3> Subject of the Day</h3><br>
+        <h2>Choose a subject</h2>
+        <h2>----------------</h2>
+        <div id="subject-list"><br> 
+        </div>
     </div>
 
       <div id="comments-list"><br>      
       </div><br>
   <h1>The textarea element</h1>
   <form class = "comment-area"> 
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" rows="4" cols="50">
-    </textarea>
+  <label for="comments">Comments:</label><br>
+  <div id="error-message"></div>
+
+  <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
     <br><br>
     <input type="submit" value="Submit">
   </form>
@@ -41,6 +44,8 @@
   server called "action_page.php".</p>
     </body>
     <script src="src/comments1.js" type="text/javascript"></script>
+    <script src="src/subjects.js" type="text/javascript"></script>
+    <script src="src/subjectAdapter.js" type="text/javascript"></script>
     <script src="src/commentsAdapter.js" type="text/javascript"></script>
     <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
   </html>
