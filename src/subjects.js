@@ -1,6 +1,10 @@
-    //const commentAdapter = new CommentAdapter
-    const commentHtmlElement = document.querySelector('div#comments-list');
-    const subjectHtmlElement = document.querySelector('div#subject-list');
+    //const commentClass = new Comment1Class
+    const commentHtmlElement = document.querySelector('div#comments-list')
+    //const commentDelete = document.querySelector('div#comment-${this.id}');
+    const subjectHtmlElement = document.querySelector('div#subject-list')
+    const buttonHtmlElement = document.querySelector('#button')
+    const nodeArray = document.querySelector('div#comments-list').childNodes
+    //const comment1 = new Comment1Class
     //const currentSubject = new Subject
 
     class Subject{
@@ -11,6 +15,7 @@
         constructor({id, theme}){
             this.id = id
             this.theme = theme
+            this.flag = ""
             this.element = document.createElement('div')
             this.element.id = `subject-${id}`
             Subject.all.push(this)
@@ -29,34 +34,33 @@
             <p>`
         }
 
+
+
         chooseSubject(){
             //let subject = document.querySelector(`#subject-${this.id}`)
+            
             this.element.addEventListener('click', this.subjectEvent)
         }
         
     // when submit a form this subject will be the subject
 
         subjectEvent = () => {
+            // let array = document.querySelector('div#comments-list').childNodes
+            // array = ""
+            commentHtmlElement.innerHTML = ""
             currentSubject = this
             errorMessage.innerHTML = ""
-            commentHtmlElement.innerHTML = ""
             Comment1Class.all.forEach(
                 function(comment){
                 if(comment.subject_id == currentSubject.id){
-                    //comment.append()
-                    comment.addComment()
-                    comment.addEventListeners()             
-                    // let newDiv = document.createElement('div')
-                    // newDiv.id = `comment-${comment.id}`
-                    // newDiv.innerHTML = `<p>
-                    // <span class="info">${comment.info}</span>
-                    // <button class="delete" id="delete-${comment.id}">Delete</button>
-                    // <p>`
-                    // commentHtmlElement.append(newDiv)
+                        comment.addComment()
+                        comment.addEventListeners() 
+
                     }
                 }
             )
-        }
+            comment1Class.addEventSort()   
+        } 
     }
             //Aqui poner el html que se necesita para poner todos los comments
             // this needs to be an arrow function

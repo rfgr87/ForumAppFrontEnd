@@ -29,3 +29,4 @@ subjectAdapter.fetchSubjects()
 commentAdapter.fetchComments()
 
 });
+

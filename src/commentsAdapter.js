@@ -52,8 +52,8 @@ class CommentAdapter{
         .then(jsonArray => {
             for (const element of jsonArray) {
                 let comment = new Comment1Class(element)
-                // comment.addComment()
-                // comment.addEventListeners()
+                //  comment.addComment()
+                //  comment.addEventListeners()
                 //subjectClass.addSubjects()
             }
         }

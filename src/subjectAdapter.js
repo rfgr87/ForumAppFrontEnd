@@ -17,8 +17,8 @@ class SubjectAdapter{
             for (const n of jsonArray) {
                 let subject = new Subject(n)
                 subject.addSubjects()
+                //subject.buttonEventSubjects()
             }
-        
         }
     )
 }

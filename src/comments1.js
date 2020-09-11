@@ -1,6 +1,9 @@
 //const commentAdapter = new CommentAdapter
 
 const htmlElement = document.querySelector('div#comments-list');
+//let html = document.querySelector('div#comments-list').childNodes
+let array = []
+
 
 class Comment1Class{
     static all = []
@@ -16,13 +19,34 @@ class Comment1Class{
         Comment1Class.all.push(this)
     }
 
+    addEventSort(){ 
+        let orderButton = document.getElementById(`order-button`)
+        orderButton.addEventListener('click', this.sortFunction())
+    }
+
+    sortFunction(){
+        let html = document.querySelector('div#comments-list').childNodes
+        htmlElement.innerHTML = ""
+        // array = []
+        html.forEach(function(n){
+            array.push(n.querySelector('.info').innerHTML)
+        }) 
+        
+        let a = array.sort
+        a.forEach(function(n){
+            let element = document.createElement(`div`)
+            element.innerHTML = `${n}`
+            htmlElement.append(element)
+        })
+    }
+
     addComment(){
         this.render()
         htmlElement.append(this.element)
     }
 
     render(){
-        this.element.innerHTML += 
+        this.element.innerHTML = 
         `<p>
         <span class="info">${this.info}</span>
         <button class="delete" id="delete-${this.id}">Delete</button>
