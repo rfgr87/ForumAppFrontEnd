@@ -19,27 +19,6 @@ class Comment1Class{
         Comment1Class.all.push(this)
     }
 
-    addEventSort(){ 
-        let orderButton = document.getElementById(`order-button`)
-        orderButton.addEventListener('click', this.sortFunction())
-    }
-
-    sortFunction(){
-        let html = document.querySelector('div#comments-list').childNodes
-        htmlElement.innerHTML = ""
-        // array = []
-        html.forEach(function(n){
-            array.push(n.querySelector('.info').innerHTML)
-        }) 
-        
-        let a = array.sort
-        a.forEach(function(n){
-            let element = document.createElement(`div`)
-            element.innerHTML = `${n}`
-            htmlElement.append(element)
-        })
-    }
-
     addComment(){
         this.render()
         htmlElement.append(this.element)

@@ -30,3 +30,4 @@ commentAdapter.fetchComments()
 
 });
 
+

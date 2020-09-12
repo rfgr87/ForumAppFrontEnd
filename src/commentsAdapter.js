@@ -1,5 +1,6 @@
 //const comment1Class = new Comment1Class
 const commentList = document.querySelector("#comment-list")
+
 //const subjectClass = new Subject
 
 // The Delete action does not work.
@@ -58,6 +59,27 @@ class CommentAdapter{
             }
         }
     )            
+}
+
+addEventSort(){ 
+    let orderButton = document.getElementById(`order-button`)
+    orderButton.addEventListener('click', this.sortFunction())
+}
+
+sortFunction(){
+    let array = []
+    let html = document.querySelector('div#comments-list').childNodes
+    htmlElement.innerHTML = ""
+    html.forEach(function(n){
+        array.push(n.querySelector('.info').innerHTML)
+    }) 
+    
+    let a = array.sort()
+    a.forEach(function(n){
+        let element = document.createElement(`div`)
+        element.innerHTML = `${n}`
+        htmlElement.append(element)
+    })
 }
     
     deleteMethod(id) {

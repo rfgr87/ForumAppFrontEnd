@@ -1,4 +1,3 @@
-    //const commentClass = new Comment1Class
     const commentHtmlElement = document.querySelector('div#comments-list')
     //const commentDelete = document.querySelector('div#comment-${this.id}');
     const subjectHtmlElement = document.querySelector('div#subject-list')
@@ -40,6 +39,8 @@
             //let subject = document.querySelector(`#subject-${this.id}`)
             
             this.element.addEventListener('click', this.subjectEvent)
+            commentAdapter.addEventSort()   
+
         }
         
     // when submit a form this subject will be the subject
@@ -54,12 +55,11 @@
                 function(comment){
                 if(comment.subject_id == currentSubject.id){
                         comment.addComment()
-                        comment.addEventListeners() 
+                        comment.addEventListeners()
 
                     }
                 }
             )
-            comment1Class.addEventSort()   
         } 
     }
             //Aqui poner el html que se necesita para poner todos los comments
