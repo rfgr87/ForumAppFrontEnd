@@ -36,10 +36,8 @@
 
 
         chooseSubject(){
-            //let subject = document.querySelector(`#subject-${this.id}`)
-            
-            this.element.addEventListener('click', this.subjectEvent)
-            commentAdapter.addEventSort()   
+            //let subject = document.querySelector(`#subject-${this.id}`)          
+            this.element.addEventListener('click', this.subjectEvent)  
 
         }
         
@@ -60,8 +58,10 @@
                     }
                 }
             )
-        } 
+
+        }
     }
+
             //Aqui poner el html que se necesita para poner todos los comments
             // this needs to be an arrow function
             // write another fucntion in this class called comment that is going 

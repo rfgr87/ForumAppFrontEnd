@@ -27,7 +27,7 @@ form.addEventListener("submit", commentAdapter.submitData)
 
 subjectAdapter.fetchSubjects()
 commentAdapter.fetchComments()
-
+commentAdapter.addEventSort()
 });
 
 
